@@ -11,7 +11,7 @@ aoc-2024/
 │   ├── util/          # Helper functions
 │   └── index.ts       # Solution runner
 ├── inputs/            # Puzzle inputs
-└── tests/             # Test files
+├── tests/             # Test files
 └── scripts/           # Script files
 ```
 
