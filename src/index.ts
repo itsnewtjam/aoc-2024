@@ -1,6 +1,6 @@
 import { readInput } from './util/input';
 
-const day = process.argv[2] || 1;
+const day = process.argv[2] || Math.min(new Date().getDate(), 25);
 const dayString = String(day).padStart(2, '0');
 
 async function solve() {
