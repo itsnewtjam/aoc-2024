@@ -39,6 +39,9 @@ const DIRECTIONS = {
 
 type Direction = 'UP'|'DOWN'|'LEFT'|'RIGHT'|'UPLEFT'|'UPRIGHT'|'DOWNLEFT'|'DOWNRIGHT';
 
+/* helper function to check for STRING_TO_FIND in the specified direction.
+ * using the relevant changes to row and column to crawl that direction
+ */
 const checkDirection = (dir: Direction, grid: string[][], row: number, col: number) => {
   const direction = DIRECTIONS[dir];
   if (
@@ -55,6 +58,9 @@ const checkDirection = (dir: Direction, grid: string[][], row: number, col: numb
   }
 }
 
+/* helper function to check for X-MASes.
+ * again using the changes in row and column to check the corner characters
+ */
 const checkMAS = (grid: string[][], row: number, col: number) => {
   const dirs = ['UPLEFT', 'UPRIGHT', 'DOWNLEFT', 'DOWNRIGHT'];
   const corners: string[] = [];
@@ -65,6 +71,13 @@ const checkMAS = (grid: string[][], row: number, col: number) => {
       corners.push(value);
     }
   });
+  /* conditions for a valid X-MAS:
+   * 1. we have four matching characters (M or S)
+   * 2. we have 2 M corners
+   * 3. we have 2 S corners
+   * 4. opposing corners are not the same, otherwise we'd have
+   *    SAS and MAM... no good
+   */
   return (
     corners.length === 4 &&
     corners.filter(corner => corner === 'M').length === 2 &&

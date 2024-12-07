@@ -8,6 +8,7 @@ export const solve: Solution = {
     const ruleLines = lines.slice(0, lines.indexOf(''));
     const updateLines = lines.slice(ruleLines.length + 1);
 
+    // split the rules into a pair where X must come before Y
     const rules = ruleLines.map(rule => {
       const [X, Y] = rule.split('|');
       return { X, Y };
@@ -24,6 +25,8 @@ export const solve: Solution = {
       let valid = true;
       for (let i = 0; i < relevantRules.length; i++) {
         const rule = relevantRules[i];
+        // basically all we need to do is check that the index of
+        // X is less than the index of Y
         if (update.indexOf(rule.X) > update.indexOf(rule.Y)) {
           valid = false;
           break;
@@ -35,6 +38,7 @@ export const solve: Solution = {
       }
     });
 
+    // sum the middle values
     let total = 0;
     validUpdates.forEach(update => {
       total += Number(update[Math.floor(update.length / 2)])
@@ -76,9 +80,19 @@ export const solve: Solution = {
       }
     });
 
+    /* up to now it was the same story as part 1, except we're
+     * pulling the invalid lines
+     */
+
     invalidUpdates.forEach(update => {
       const relevantRules = rules.filter(rule => update.includes(rule.X) && update.includes(rule.Y));
 
+      /* for any two consecutive numbers x and y, check if there is
+       * either a rule stating:
+       * - x must come before y
+       * or
+       * - y must come before x
+       */
       update.sort((x, y) => {
         const ruleXY = relevantRules.find(rule => rule.X === x && rule.Y === y);
         const ruleYX = relevantRules.find(rule => rule.X === y && rule.Y === x);

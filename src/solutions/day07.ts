@@ -8,6 +8,12 @@ interface Equation {
 
 type Operator = '+'|'*'|'||';
 
+/* helper function to incrementally get combinations
+ * for inputs (
+ *   combos = ['abc', 'def']
+ *   items = ['x', 'y']
+ * ), would return ['abcx', 'abcy', 'defx', 'defy']
+ */
 const getCombinations = (combos: string[][], items: string[]) => {
   let newCombos: string[][] = [];
   combos.forEach(combo => {
@@ -19,12 +25,18 @@ const getCombinations = (combos: string[][], items: string[]) => {
   return newCombos;
 };
 
+/* helper function to see if any arrangement of the given
+ * operators can make the given equation true
+ */
 const tryOperators = (operators: Operator[], equation: Equation) => {
+  // incrementally build combinations to the needed
+  // length for the equation
   let combos: string[][] = operators.map(_ => []);
   for (let i = 0; i < equation.terms.length - 1; i++) {
     combos = getCombinations(combos, operators);
   }
 
+  // try computing every operator combination
   for (let i = 0; i < combos.length; i++) {
     const curr = combos[i];
     let runningTotal = equation.terms[0];
@@ -42,6 +54,7 @@ const tryOperators = (operators: Operator[], equation: Equation) => {
       }
     }
 
+    // it worked!
     if (runningTotal === equation.value) {
       return true;
     }
