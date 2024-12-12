@@ -8,6 +8,6 @@ describe('Day 11', () => {
   });
 
   test('Part 2', () => {
-    expect(solve.part2(testInput)).toBe(0);
+    expect(solve.part2(testInput)).toBe(65601038650482);
   });
 });
