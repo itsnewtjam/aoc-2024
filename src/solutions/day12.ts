@@ -134,7 +134,7 @@ export const solve: Solution = {
         /* this is... more verbose than i feel like it needed to be. but it's
          * simple and it works :)
          * i'm looping through each plot in a region, and checking if any side
-         * of it is on the region's edge. if so, we crawl that edge to find the
+         * of it is on the region's edge. if so, we crawl that edge to find
          * where that edge starts and ends, adding it to a set so we don't
          * repeat any edges.
          */
