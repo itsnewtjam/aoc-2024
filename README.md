@@ -50,7 +50,7 @@ npm run test:watch 1  # Run tests for day 1 in watch mode
 
 ## Progress
 
-⭐ Total stars: 26/50
+⭐ Total stars: 28/50
 
 - [x] Day 1
 - [x] Day 2
@@ -65,7 +65,7 @@ npm run test:watch 1  # Run tests for day 1 in watch mode
 - [x] Day 11
 - [x] Day 12
 - [x] Day 13
-- [ ] Day 14
+- [x] Day 14
 - [ ] Day 15
 - [ ] Day 16
 - [ ] Day 17
