@@ -14,7 +14,7 @@ const testInput2 = `
 2024
 `;
 
-describe('Day 21', () => {
+describe('Day 22', () => {
   test('Part 1', () => {
     expect(solve.part1(testInput)).toBe(37327623);
   });
